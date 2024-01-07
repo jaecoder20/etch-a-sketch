@@ -9,12 +9,35 @@ function createSketchCells(number_cells){
     let cellHeight = getComputedStyle(sketchpad).height/number_cells;
     for(let i=0;i<number_cells**2;i++){
         let cell = document.createElement('div');
+        cell.classList.add('sketch-cell');
     cell.style.width = cellWidth;
     cell.style.height = cellHeight;
         sketchpad.appendChild(cell);
     }
 
+    allowDrawing(sketchpad);
+
 }
 
+function allowDrawing(sketchpad){
+    var isDragging = false;
 
-createSketchCells(16);
+    sketchpad.querySelectorAll('div').forEach(function(div) {
+        div.addEventListener('mousedown', function(event) {
+            isDragging = true;
+        });
+      });
+      document.addEventListener('mouseover', function(event) {
+        if (isDragging && event.target.classList.contains('sketch-cell')) {
+          // Update the position of the dragged element based on the mouse movement
+          event.target.style.backgroundColor = 'black';
+        }
+      });
+      
+      // Add mouseup event listener to the document
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+}
+
+createSketchCells(100);
