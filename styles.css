@@ -1,5 +1,5 @@
 :root{
-    --main-color: red;
+    --main-color: blue;
     --bg-color: grey;
 }
 *{
@@ -18,7 +18,7 @@ body{
 #container{
     background-color: var(--main-color);
     width: 500px;
-    height: 500px;
+    height: 550px;
     border-radius: 80px;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@ body{
     position: relative;
     bottom: 30px;
     background-color: white;
-    width: 400px;
+    width: 450px;
     height: 260px;
     box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(0,0,0,0.5), inset -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5);
 
@@ -43,11 +43,106 @@ body{
     justify-content: space-between;
     gap: 20px;
 }
-.btn{
+.circle{
+    box-shadow: 0.2em 0.2em 0.2em 0 rgba(0,0,0,0.5), -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5);
     box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(0,0,0,0.5), inset -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5);
-
     border-radius: 50%;
     width: 100px;
     height: 100px;
     background-color: white;
+}
+
+.circle.right{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.circle.left{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cell-size{
+    border-radius: 50%;
+}
+
+
+
+.increment-grid-size{
+    -webkit-filter: drop-shadow(1px 1px 1px rgba(0,0,0,.5));
+  filter: drop-shadow(
+    1px 1px 1px rgba(0,0,0,.5));
+    width: 0; 
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid black;
+    cursor: pointer;
+}
+
+.decrement-grid-size{
+    -webkit-filter: drop-shadow(1px 1px 1px rgba(0,0,0,.5));
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,.5));
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid black;
+    cursor: pointer;
+}
+
+.toggle-btns{
+    gap: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.toggle{
+    font-size: 20px;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+	display: inline-block;
+    padding: 10px 10px 10px 10px ;
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+}
+
+input[type=color] {
+    cursor: pointer;
+    width: 80px;
+    height: 80px; 
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+input[type=color]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+
+input[type=color]::-webkit-color-swatch-wrapper {
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.active{
+    color: var(--main-color);
 }
