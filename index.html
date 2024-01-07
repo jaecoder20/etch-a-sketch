@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="container">
+        <div class="sketch-pad">
+
+        </div>
+        <div class="sketch-controls">
+            <div class="toggle-btns">
+                <button class="toggle color active">Colour</button>
+                <button class="toggle rainbow">Rainbow</button>
+                <button class="toggle eraser">Eraser</button>
+                <button class="toggle clear">Clear</button>
+            </div>
+            <div class="circle left">
+                <input class="color-picker" type="color" name="" id="">
+            </div>
+            <div class="circle right">
+                <div class="increment-grid-size"></div>
+                <p class="grid-size">16</p>
+                <div class="decrement-grid-size"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
