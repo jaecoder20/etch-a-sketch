@@ -5,13 +5,15 @@ function createSketchCells(number_cells){
     console.log(sketchpad);
     // This allows for dynamic calculation of the grid cell dimensions based sketch pad dimensions 
     //and user input for number of cells
-    let cellWidth = getComputedStyle(sketchpad).width/number_cells;
-    let cellHeight = getComputedStyle(sketchpad).height/number_cells;
+    let cellWidth = parseFloat(getComputedStyle(sketchpad).width)/number_cells;
+    let cellHeight = parseFloat(getComputedStyle(sketchpad).height)/number_cells;
+    cellHeight = cellHeight.toString()+"px";
+    cellWidth = cellWidth.toString()+"px";
     for(let i=0;i<number_cells**2;i++){
         let cell = document.createElement('div');
         cell.classList.add('sketch-cell');
-    cell.style.width = cellWidth;
-    cell.style.height = cellHeight;
+        cell.style.width = cellWidth;
+        cell.style.height = cellHeight;
         sketchpad.appendChild(cell);
     }
 
@@ -40,4 +42,5 @@ function allowDrawing(sketchpad){
       });
 }
 
-createSketchCells(100);
+//this does not work for different inputs
+createSketchCells(64);
