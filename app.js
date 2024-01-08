@@ -44,4 +44,4 @@ function allowDrawing(sketchpad){
 }
 
 //this does not work for different inputs
-createSketchCells(100);
+createSketchCells(50);
