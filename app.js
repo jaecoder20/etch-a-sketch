@@ -27,6 +27,7 @@ function allowDrawing(sketchpad){
     sketchpad.querySelectorAll('div').forEach(function(div) {
         div.addEventListener('mousedown', function(event) {
             isDragging = true;
+            event.target.style.backgroundColor = 'black';
         });
       });
       document.addEventListener('mouseover', function(event) {
@@ -43,4 +44,4 @@ function allowDrawing(sketchpad){
 }
 
 //this does not work for different inputs
-createSketchCells(64);
+createSketchCells(100);
