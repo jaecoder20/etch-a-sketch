@@ -13,11 +13,11 @@ A web-based Etch-a-Sketch application with a nostalgic feel, allowing users to d
 - **Dynamic Grid Calculation:** Dynamically calculates grid cell dimensions based on the sketch pad size and user input.
 
 ## Screenshot
-![Alt text](image.png)
+![Screenshot of Project](image.png)
 
 ## Live Demo
 
-[Live Demo](#) 
+[Live Demo](https://jaecoder20.github.io/etch-a-sketch/) 
 
 ## How to Use
 
