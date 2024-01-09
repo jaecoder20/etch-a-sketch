@@ -1,4 +1,5 @@
 "use strict";
+let sketch_color = document.querySelector(".color-picker");
 document.addEventListener('DOMContentLoaded', function() {
   let number_cells = 16; //By default the sketchpad will be 16x16
   createSketchCells(number_cells);
@@ -53,13 +54,13 @@ function allowDrawing(sketchpad){
     sketchpad.querySelectorAll('div').forEach(function(div) {
         div.addEventListener('mousedown', function(event) {
             isDragging = true;
-            event.target.style.backgroundColor = 'black';
+            event.target.style.backgroundColor = sketch_color.value;
         });
       });
       document.addEventListener('mouseover', function(event) {
         if (isDragging && event.target.classList.contains('sketch-cell')) {
           // Update the position of the dragged element based on the mouse movement
-          event.target.style.backgroundColor = 'black';
+          event.target.style.backgroundColor = sketch_color.value;
         }
       });
       
