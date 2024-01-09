@@ -152,7 +152,3 @@ input[type=color]::-webkit-color-swatch-wrapper {
     color: var(--main-color);
 }
 
-.sketch-pad div{
-    background-color: yellow;
-    z-index: 0;
-}

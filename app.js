@@ -1,6 +1,10 @@
 "use strict";
 let sketch_color = document.querySelector(".color-picker");
+let mode = "color";
 document.addEventListener('DOMContentLoaded', function() {
+  let eraser = document.querySelector(".eraser");
+  let color = document.querySelector(".color");
+  let clear = document.querySelector(".clear");
   let number_cells = 16; //By default the sketchpad will be 16x16
   createSketchCells(number_cells);
   let cellNumber_incrementor = document.querySelector('.increment-grid-size');
@@ -21,6 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
     updateGridSizeDisplay(number_cells,gridSize_Display);
     limitGridSizeRange(number_cells,cellNumber_decrementor,cellNumber_incrementor);
   });
+  eraser.addEventListener('click', function(event){
+    mode = "erase";
+    eraser.classList.toggle("active");
+    color.classList.toggle("active");
+  });
+  color.addEventListener('click', function(event){
+    mode = "color";
+    eraser.classList.toggle("active");
+    color.classList.toggle("active");
+  });
+  clear.addEventListener('click', function(event){
+    createSketchCells(number_cells);
+  });
+
 });
 
 
@@ -54,13 +72,21 @@ function allowDrawing(sketchpad){
     sketchpad.querySelectorAll('div').forEach(function(div) {
         div.addEventListener('mousedown', function(event) {
             isDragging = true;
-            event.target.style.backgroundColor = sketch_color.value;
+            if (mode==="color"){
+              event.target.style.backgroundColor = sketch_color.value;
+            }else if (mode==="erase"){
+              event.target.style.backgroundColor = "white";
+            }
         });
       });
       document.addEventListener('mouseover', function(event) {
         if (isDragging && event.target.classList.contains('sketch-cell')) {
           // Update the position of the dragged element based on the mouse movement
-          event.target.style.backgroundColor = sketch_color.value;
+          if (mode==="color"){
+            event.target.style.backgroundColor = sketch_color.value;
+          }else if (mode==="erase"){
+            event.target.style.backgroundColor = "white";
+          }
         }
       });
       
