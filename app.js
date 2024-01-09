@@ -1,7 +1,33 @@
 "use strict";
+document.addEventListener('DOMContentLoaded', function() {
+  let number_cells = 16; //By default the sketchpad will be 16x16
+  createSketchCells(number_cells);
+  let cellNumber_incrementor = document.querySelector('.increment-grid-size');
+  let cellNumber_decrementor = document.querySelector('.decrement-grid-size');
+  let gridSize_Display = document.querySelector('.grid-size');
+  limitGridSizeRange(number_cells,cellNumber_decrementor,cellNumber_incrementor);
+  cellNumber_incrementor.addEventListener('click', function(){
+    number_cells++;
+    console.log(number_cells);
+    createSketchCells(number_cells);
+    updateGridSizeDisplay(number_cells,gridSize_Display);
+    limitGridSizeRange(number_cells,cellNumber_decrementor,cellNumber_incrementor);
+  });
+  cellNumber_decrementor.addEventListener('click', function(){
+    number_cells--;
+    console.log(number_cells);
+    createSketchCells(number_cells);
+    updateGridSizeDisplay(number_cells,gridSize_Display);
+    limitGridSizeRange(number_cells,cellNumber_decrementor,cellNumber_incrementor);
+  });
+});
+
+
+
 function createSketchCells(number_cells){
     // number_cells is the amount of cells in the length and width and of sketchpad.
     let sketchpad = document.querySelector(".sketch-pad");
+    sketchpad.innerHTML = '';
     console.log(sketchpad);
     // This allows for dynamic calculation of the grid cell dimensions based sketch pad dimensions 
     //and user input for number of cells
@@ -43,5 +69,29 @@ function allowDrawing(sketchpad){
       });
 }
 
-//this does not work for different inputs
-createSketchCells(100);
+function updateGridSizeDisplay(number_cells, gridSize_Display){
+  gridSize_Display.textContent = number_cells.toString()+"x"+number_cells.toString();
+}
+
+function limitGridSizeRange(number_cells,cellNumber_decrementor,cellNumber_incrementor){
+  // users will only be able to select between numbers 16 and 64 by greying out the buttons when
+  // the threshold is reached
+  if (number_cells==16){
+    cellNumber_decrementor.style.opacity = "0.5";
+    cellNumber_decrementor.style.cursor = "not-allowed";
+    cellNumber_decrementor.style.pointerEvents = 'none';
+  }else if (number_cells>16){
+    cellNumber_decrementor.style.opacity = "1";
+    cellNumber_decrementor.style.cursor = "pointer";
+    cellNumber_decrementor.style.pointerEvents = 'auto';
+  }
+  if(number_cells==64){
+    cellNumber_incrementor.style.opacity = "0.5";
+    cellNumber_incrementor.style.cursor = "not-allowed";
+    cellNumber_incrementor.style.pointerEvents = 'none';
+  }else if (number_cells<64){
+    cellNumber_incrementor.style.opacity = "1";
+    cellNumber_incrementor.style.cursor = "pointer";
+    cellNumber_incrementor.style.pointerEvents = 'auto';
+  }
+}
